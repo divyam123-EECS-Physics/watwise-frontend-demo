@@ -1,5 +1,5 @@
 import { ResponsiveLine } from "@nivo/line";
-import type { Serie } from "@nivo/line";
+import type { Serie } from "../types/nivo";
 import "./ChartCard.css";
 
 interface ChartCardProps {
@@ -12,7 +12,7 @@ export default function ChartCard({ title, data }: ChartCardProps) {
 
   const tickInterval = hasData ? Math.max(1, Math.floor(data[0].data.length / 6)) : 1;
   const tickValues = hasData
-    ? data[0].data.filter((_, i) => i % tickInterval === 0).map((d) => d.x as string)
+    ? data[0].data.filter((_: { x: string | null; y: number | null }, i: number) => i % tickInterval === 0).map((d) => d.x as string)
     : undefined;
 
   return (

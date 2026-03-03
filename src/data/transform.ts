@@ -1,4 +1,4 @@
-import type { Serie } from "@nivo/line";
+import type { Serie } from "../types/nivo";
 import type { ForecastResponse } from "./api";
 
 const PANEL_VARS = [

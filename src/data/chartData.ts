@@ -1,4 +1,4 @@
-import type { Serie } from "@nivo/line";
+import type { Serie } from "../types/nivo";
 
 export const chart1Data: Serie[] = [
   {

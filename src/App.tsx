@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import type { Serie } from "@nivo/line";
+import type { Serie } from "./types/nivo";
 import ChartCard from "./components/ChartCard";
 import InfoCard from "./components/InfoCard";
 import Sidebar from "./components/Sidebar";
