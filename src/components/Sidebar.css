@@ -53,6 +53,18 @@
   align-self: flex-end;
   max-width: 90%;
   word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.sidebar__chat-bubble--user {
+  align-self: flex-end;
+  background: rgba(79, 142, 247, 0.12);
+}
+
+.sidebar__chat-bubble--bot {
+  align-self: flex-start;
+  background: rgba(56, 217, 169, 0.12);
+  border: 1px solid rgba(56, 217, 169, 0.18);
 }
 
 .sidebar__chat-form {
@@ -97,4 +109,22 @@
 
 .sidebar__chat-send:hover {
   opacity: 0.85;
+}
+
+.sidebar__chat-download {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.sidebar__chat-download:hover {
+  opacity: 0.9;
+  border-color: rgba(56, 217, 169, 0.5);
 }

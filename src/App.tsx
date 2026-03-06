@@ -80,6 +80,10 @@ function App() {
   const [weatherAgg, setWeatherAgg] = useState(DEFAULT_WEATHER_AGG);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [analysisEvent, setAnalysisEvent] = useState<{ id: number; text: string }>({
+    id: 0,
+    text: "",
+  });
   const lastResp = useRef<ForecastResponse | null>(null);
 
   const dragging = useRef(false);
@@ -115,14 +119,18 @@ function App() {
     setError(null);
     try {
       const resp = await fetchForecast({
-        start_time: `${startDate}T00:00:00`,
-        end_time: `${endDate}T23:00:00`,
+        start_time: `${startDate}T00:00:00Z`,
+        end_time: `${endDate}T23:00:00Z`,
         time_period: period,
       });
       lastResp.current = resp;
       setCharts(buildChartSeries(resp));
       setPanelAgg(buildPanelAggregates(resp));
       setWeatherAgg(buildWeatherAggregates(resp));
+      setAnalysisEvent((prev) => ({
+        id: prev.id + 1,
+        text: resp.llm_analysis ?? "",
+      }));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
@@ -139,8 +147,8 @@ function App() {
     setError(null);
     try {
       const resp = await fetchForecast({
-        start_time: `${startDate}T00:00:00`,
-        end_time: `${endDate}T23:00:00`,
+        start_time: `${startDate}T00:00:00Z`,
+        end_time: `${endDate}T23:00:00Z`,
         time_period: period,
       });
       lastResp.current = resp;
@@ -185,7 +193,7 @@ function App() {
         </div>
 
         <section className="dashboard__right">
-          <Sidebar />
+          <Sidebar analysisEvent={analysisEvent} />
           <ControlsPanel
             loading={loading}
             onSubmit={handleSubmit}

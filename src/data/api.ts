@@ -13,6 +13,7 @@ export interface ForecastResponse {
   end_time: string;
   time: string[];
   variables: Record<string, VariableData>;
+  llm_analysis?: string;
 }
 
 export interface ForecastRequest {
