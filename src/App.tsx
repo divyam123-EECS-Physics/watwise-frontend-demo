@@ -166,7 +166,7 @@ function App() {
   return (
     <div className="dashboard">
       <header className="dashboard__header">
-        <h1 className="dashboard__title">WatWise Dashboard</h1>
+        <h1 className="dashboard__title">WattWise Dashboard</h1>
         {error && <p className="dashboard__error">{error}</p>}
       </header>
 

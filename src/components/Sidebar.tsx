@@ -61,7 +61,7 @@ export default function Sidebar({ analysisEvent }: SidebarProps) {
   const handleDownloadTxt = () => {
     const stamp = new Date().toISOString().replace(/[:.]/g, "-");
     const content = chatTxt || "No chat content yet.";
-    downloadTxt(content, `watwise_chat_${stamp}.txt`);
+    downloadTxt(content, `wattwise_chat_${stamp}.txt`);
   };
 
   return (
